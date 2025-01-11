@@ -62,7 +62,7 @@ systemctl enable ufw --now
 ### 7. 运行
 
 ```shell
-just run
+just enable
 ```
 
 
@@ -80,12 +80,7 @@ just outbounds
 ### 9. 停止运行
 
 ```shell
-pkill sing-box
-```
-
-或
-
-```shell
+just disable
 just stop
 ```
 
@@ -94,5 +89,5 @@ just stop
 ### 10. 更新配置以及重新运行
 
 ```shell	
-just update
+just reload
 ```

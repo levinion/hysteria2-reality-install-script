@@ -6,11 +6,9 @@ install:
   just install_cert
   set dotenv-required
   just install_config
+  just install_service
   just port_hopping
   just optimize
-
-run:
-  sing-box run -c /etc/sing-box/config.json &
 
 install_singbox:
   mkdir -p sing-box-install-tmp
@@ -189,16 +187,47 @@ reality_client_config:
   },
   EOF
 
+install_service:
+  #!/usr/bin/bash
+  mkdir -p /var/lib/sing-box
+  cat > /etc/systemd/system/sing-box-server.service <<EOF
+  [Unit]
+  Description=Sing-Box Server Service (config.yaml)
+  After=network.target
+
+  [Service]
+  Type=simple
+  ExecStart=/usr/bin/sing-box run -c /etc/sing-box/config.json
+  WorkingDirectory=/var/lib/sing-box
+  User=root
+  Group=root
+  CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+  AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+  NoNewPrivileges=true
+  Restart=always
+
+  [Install]
+  WantedBy=multi-user.target
+  EOF
+
 outbounds:
   just hysteria2_client_config
   just reality_client_config
 
-stop:
-  pkill sing-box
+enable:
+  systemctl enable sing-box-server.service --now
 
-update:
+stop:
+  systemctl stop sing-box-server.service
+
+restart:
+  systemctl restart sing-box-server.service
+
+disable:
+  systemctl disable sing-box-server.service
+
+reload:
   set dotenv-required
-  just stop
   just install_config
   just port_hopping
-  just run
+  just restart
