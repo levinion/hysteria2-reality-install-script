@@ -9,7 +9,7 @@
 ### 1. 将仓库克隆到本地
 
 ```shell
-git clone https://github.com/levinion/hysteria2-reality-install
+git clone https://github.com/levinion/hysteria2-reality-install-script
 ```
 
 
@@ -25,7 +25,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -
 ### 3. 安装sing-box
 
 ```shell
-cd hysteria2-reality-install
+cd hysteria2-reality-install-script
 just install_singbox
 ```
 
