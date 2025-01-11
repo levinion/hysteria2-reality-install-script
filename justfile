@@ -47,6 +47,9 @@ install_config:
           "enabled": true,
           "certificate_path": "/etc/hysteria/cert.pem",
           "key_path": "/etc/hysteria/private.key"
+          "alpn": [
+            "h3"
+          ]
         }
       },
       {
