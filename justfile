@@ -28,6 +28,7 @@ install_cert:
 
 install_config:
   #!/usr/bin/bash
+  mkdir -p /etc/sing-box
   cat > /etc/sing-box/config.json <<EOF
   {
     "inbounds": [
