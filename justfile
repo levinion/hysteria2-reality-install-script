@@ -42,9 +42,9 @@ install_config:
             "password": "$password"
           }
         ],
+        "masquerade": "https://bing.com",
         "tls": {
           "enabled": true,
-          "server_name": "bing.com",
           "certificate_path": "/etc/hysteria/cert.pem",
           "key_path": "/etc/hysteria/private.key"
         }
