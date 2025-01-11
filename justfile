@@ -10,7 +10,7 @@ install:
   just optimize
 
 run:
-  sing-box run -c /etc/sing-box/config.json
+  sing-box run -c /etc/sing-box/config.json &
 
 install_singbox:
   mkdir -p sing-box-install-tmp
