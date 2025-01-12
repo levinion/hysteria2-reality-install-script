@@ -67,7 +67,7 @@ install_config:
             "enabled": true,
             "handshake": {
                 "server": "www.tesla.com",
-                "server_port": 443
+                "server_port": $reality_listen_port
             },
             "private_key": "$private_key",
             "short_id": [
