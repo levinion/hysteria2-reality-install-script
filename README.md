@@ -73,7 +73,6 @@ just enable
 just outbounds
 ```
 
-执行前最好在`.env`文件中填写服务器IP地址
 
 
 

@@ -107,6 +107,7 @@ generate_manual:
 
 generate:
   #!/usr/bin/bash
+  server_ip=$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
   user_name=$(just generate_user_name)
   password=$(just generate_password)
   keypair=$(just generate_reality_keypair)
@@ -124,7 +125,7 @@ generate:
   public_key="$public_key"
   uuid="$uuid"
   short_id="$short_id"
-  server_ip=""
+  server_ip="$server_ip"
   EOF
 
 port_hopping:
