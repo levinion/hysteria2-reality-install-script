@@ -67,7 +67,7 @@ install_config:
             "enabled": true,
             "handshake": {
                 "server": "www.tesla.com",
-                "server_port": $reality_listen_port
+                "server_port": 443,
             },
             "private_key": "$private_key",
             "short_id": [
@@ -128,12 +128,13 @@ generate:
   EOF
 
 port_hopping:
+  just clear_port_hopping_rules
   iptables -t nat -A PREROUTING -i eth0 -p udp --dport $hysteria2_hopping_ports -j REDIRECT --to-ports $hysteria2_listen_port
   ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport $hysteria2_hopping_ports -j REDIRECT --to-ports $hysteria2_listen_port
 
 clear_port_hopping_rules:
-  iptables -t nat -D PREROUTING -i eth0 -p udp --dport $hysteria2_hopping_ports -j REDIRECT --to-ports $hysteria2_listen_port
-  ip6tables -t nat -D PREROUTING -i eth0 -p udp --dport $hysteria2_hopping_ports -j REDIRECT --to-ports $hysteria2_listen_port
+  iptables -t nat -F
+  ip6tables -t nat -F
 
 ufw:
   ufw allow ssh
