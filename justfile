@@ -44,7 +44,7 @@ install_config:
         "tls": {
           "enabled": true,
           "certificate_path": "/etc/hysteria/cert.pem",
-          "key_path": "/etc/hysteria/private.key"
+          "key_path": "/etc/hysteria/private.key",
           "alpn": [
             "h3"
           ]
