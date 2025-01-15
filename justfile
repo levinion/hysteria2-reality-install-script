@@ -1,6 +1,7 @@
 #!/usr/bin/just --justfile
 
 set dotenv-path:=".env"
+set version:="1.11.0-beta.23"
 
 install:
   just install_cert
@@ -12,9 +13,9 @@ install:
 
 install_singbox:
   mkdir -p sing-box-install-tmp
-  wget https://github.com/SagerNet/sing-box/releases/download/v1.11.0-beta.22/sing-box-1.11.0-beta.22-linux-amd64.tar.gz
-  tar -xzf sing-box-1.11.0-beta.22-linux-amd64.tar.gz
-  install -Dm755 ./sing-box-1.11.0-beta.22-linux-amd64/sing-box /usr/bin
+  wget https://github.com/SagerNet/sing-box/releases/download/v{{version}}/sing-box-{{version}}-linux-amd64.tar.gz
+  tar -xzf sing-box-{{version}}-linux-amd64.tar.gz
+  install -Dm755 ./sing-box-{{version}}-linux-amd64/sing-box /usr/bin
   rm -rf sing-box-*
 
 install_cert:
