@@ -1,7 +1,7 @@
 #!/usr/bin/just --justfile
 
 set dotenv-path:=".env"
-version:="1.11.0-beta.23"
+version:="1.11.0-beta.24"
 
 install:
   just install_cert
