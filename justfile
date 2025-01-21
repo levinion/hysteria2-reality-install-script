@@ -1,7 +1,10 @@
 #!/usr/bin/just --justfile
 
 set dotenv-path:=".env"
-version:="1.11.0-beta.24"
+version:=`curl -s "https://api.github.com/repos/SagerNet/sing-box/releases" | jq -r '[.[] | select(.prerelease==true)][0].tag_name' | awk -F 'v' '{print $2}'`
+
+version:
+  @echo {{version}}
 
 install:
   just install_cert
@@ -233,4 +236,8 @@ reload:
   set dotenv-required
   just install_config
   just port_hopping
+  just restart
+
+update:
+  just install_singbox
   just restart
