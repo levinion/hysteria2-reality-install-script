@@ -1,7 +1,7 @@
 #!/usr/bin/just --justfile
 
-set dotenv-path:=".env"
-version:=`curl -s "https://api.github.com/repos/SagerNet/sing-box/releases" | jq -r '[.[] | select(.prerelease==true)][0].tag_name' | awk -F 'v' '{print $2}'`
+set dotenv-path:="config"
+version:=`curl -s "https://api.github.com/repos/SagerNet/sing-box/releases" | jq -r '[.[] | select(.prerelease==false)][0].tag_name' | awk -F 'v' '{print $2}'`
 
 version:
   @echo {{version}}
@@ -119,7 +119,7 @@ generate:
   public_key=$(echo $keypair | awk '{print $4}')
   uuid=$(just generate_uuid)
   short_id=$(just generate_short_id)
-  cat > .env <<EOF
+  cat > config <<EOF
   hysteria2_listen_port=8443
   hysteria2_hopping_ports="20000:50000"
   reality_listen_port=443
