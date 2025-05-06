@@ -78,12 +78,8 @@ install_config:
               "$short_id"
             ]
           }
-<<<<<<< HEAD
-        }
-=======
         },
         "multiplex": { "enabled": $multiplex, "padding": $padding },
->>>>>>> 85da284 (add multiplex option)
       }
     ],
     "outbounds": [
@@ -197,10 +193,7 @@ reality_client_config:
       "server_name": "www.tesla.com",
       "utls": { "enabled": true, "fingerprint": "chrome" },
     },
-<<<<<<< HEAD
-=======
     "multiplex": { "enabled": false, "padding": false},
->>>>>>> 85da284 (add multiplex option)
   },
   EOF
 
