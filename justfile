@@ -160,12 +160,12 @@ hysteria2_client_config:
   {
     "type": "hysteria2",
     "tag": "hysteria2",
-    "server": $server_ip,
+    "server": "$server_ip",
     "server_port": $hysteria2_listen_port,
-    "server_ports": $hysteria2_hopping_ports,
+    "server_ports": "$hysteria2_hopping_ports",
     "up_mbps": 0,
     "down_mbps": 0,
-    "password": $password,
+    "password": "$password",
     "tls": { "enabled": true, "server_name": "bing.com", "insecure": true },
   },
   EOF
@@ -176,9 +176,9 @@ reality_client_config:
   {
     "type": "vless",
     "tag": "reality",
-    "server": $server_ip,
+    "server": "$server_ip",
     "server_port": $reality_listen_port,
-    "uuid": $uuid,
+    "uuid": "$uuid",
     "flow": "xtls-rprx-vision",
     "network": "tcp",
     "tls":
@@ -187,8 +187,8 @@ reality_client_config:
       "reality":
       {
         "enabled": true,
-        "public_key": $public_key,
-        "short_id": $short_id,
+        "public_key": "$public_key",
+        "short_id": "$short_id",
       },
       "server_name": "www.tesla.com",
       "utls": { "enabled": true, "fingerprint": "chrome" },
