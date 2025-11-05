@@ -29,7 +29,7 @@ install_cert:
     -out /etc/hysteria/cert.pem -subj "/CN=bing.com"
 
 install_config:
-  #!/usr/bin/bash
+  #!/bin/bash
   mkdir -p /etc/sing-box
   cat > /etc/sing-box/config.json <<EOF
   {
@@ -111,7 +111,7 @@ generate_manual:
   just generate_short_id
 
 generate:
-  #!/usr/bin/bash
+  #!/bin/bash
   server_ip=$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
   user_name=$(just generate_user_name)
   password=$(just generate_password)
@@ -155,7 +155,7 @@ optimize:
   sysctl -w net.core.wmem_max=16777216
 
 hysteria2_client_config:
-  #!/usr/bin/bash
+  #!/bin/bash
   cat <<EOF
   {
     "type": "hysteria2",
@@ -171,7 +171,7 @@ hysteria2_client_config:
   EOF
 
 reality_client_config:
-  #!/usr/bin/bash
+  #!/bin/bash
   cat <<EOF
   {
     "type": "vless",
@@ -198,7 +198,7 @@ reality_client_config:
   EOF
 
 install_service:
-  #!/usr/bin/bash
+  #!/bin/bash
   mkdir -p /var/lib/sing-box
   cat > /etc/systemd/system/sing-box-server.service <<EOF
   [Unit]
