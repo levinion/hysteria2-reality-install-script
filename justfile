@@ -71,7 +71,7 @@ install_config:
             "enabled": true,
             "handshake": {
                 "server": "www.tesla.com",
-                "server_port": 443,
+                "server_port": 443
             },
             "private_key": "$private_key",
             "short_id": [
@@ -79,7 +79,7 @@ install_config:
             ]
           }
         },
-        "multiplex": { "enabled": $multiplex, "padding": $padding },
+        "multiplex": { "enabled": $multiplex, "padding": $padding }
       }
     ],
     "outbounds": [
@@ -149,6 +149,7 @@ ufw:
   ufw allow $hysteria2_hopping_ports/udp
   ufw allow $hysteria2_listen_port/udp
   ufw allow $reality_listen_port/tcp
+  ufw enable
 
 optimize:
   sysctl -w net.core.rmem_max=16777216
